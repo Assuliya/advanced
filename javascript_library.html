@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Hello:)</h1>
+
+<script type="text/javascript">
+	const _ = {
+	   	map: function(arr, callback) {
+		   	if (typeof(callback) === 'function'){
+		    	for(let i = 0; i < arr.length; i++) {
+	    			arr[i] = callback(arr[i]);  
+	  			}
+	    		return arr;
+	  		}
+	   	},
+	   	reduce: function(arr, callback, memo) { 
+	    	if (typeof(callback) === 'function'){
+	   			let index = 0;
+	   			if (!memo){
+	   				memo = arr[0];
+	   				index = 1
+	   			}
+		    	for(let i = index; i < arr.length; i++) {
+	    			memo = callback(memo, arr[i]) 
+	  			}
+	    		return memo;
+	  		}
+	   	},
+	   	find: function(arr, callback) {  
+	    	if (typeof(callback) === 'function'){
+	   			let find  
+		    	for(let i = 0; i < arr.length; i++) {
+	    			if(callback(arr[i])){
+	    				find = arr[i]
+	    				break
+	    			}	
+	  			}
+	    		return find;
+	  		}
+	   	},
+	   	filter: function(arr, callback) { 
+	    	if (typeof(callback) === 'function'){
+	   			let find = []; 
+		    	for(let i = 0; i < arr.length; i++) {
+	    			if(callback(arr[i])){
+	    				find.push(arr[i])
+	    			}	
+	  			}
+	    		return find;
+	  		}
+	   	},
+	   	reject: function(arr, callback) { 
+	    	if (typeof(callback) === 'function'){
+	   			let find = []; 
+		    	for(let i = 0; i < arr.length; i++) {
+	    			if(!callback(arr[i])){
+	    				find.push(arr[i])
+	    			}	
+	  			}
+	    		return find;
+	  		}
+	   	}
+	}
+
+
+
+	var maping = _.map([1, 2, 3], function(num){ return num * 3; });
+	console.log(maping)
+
+	var sum = _.reduce([1, 2, 3], function(memo, num){ return memo + num; }, 0);
+	console.log(sum)
+
+	var finding = _.find([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+	console.log(finding)
+
+	var evens = _.filter([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+	console.log(evens); 
+
+	var odds = _.reject([1, 2, 3, 4, 5, 6], function(num){ return num % 2 == 0; });
+	console.log(odds);
+
+</script>
+</body>
+</html>
