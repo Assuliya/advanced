@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hunting Github</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		var button = document.getElementById("gitHunter");
+		button.addEventListener("click", hunt);
+		function hunt() {
+		  	$.get("https://api.github.com/users/assuliya", displayName);
+			function displayName(data) {
+			  console.log(data);
+			  document.getElementById("display").innerHTML = data.login;
+			};
+		};
+	});
+	</script>
+</head>
+<body>
+	<button id=gitHunter>Hunt!</button>
+	<div id="display"></div>
+</body>
+</html>
