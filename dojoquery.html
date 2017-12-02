@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DojoQuery</title>
+	<script src="jquery-3.2.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		(function(){
+			function $Dojo(button){
+				this.id = document.getElementById(button);		
+				this.click = function(callback){
+						this.id.addEventListener("click", callback);
+				};
+				this.hover = function(on, off){				
+						this.id.onmouseover = on
+						this.id.onmouseout = off
+				};
+				return this;
+			};
+
+			$Dojo("a").click(function() { console.log("The button was clicked!") });
+			$Dojo("b").hover(
+				function() { console.log("The button was hovered on!") }, 
+				function() { console.log("The button was hovered off!") }
+				);
+		
+			return $Dojo
+		}());
+	});
+	</script>
+</head>
+<body>
+	<button id=a>A button!</button>
+	<button id=b>B button!</button>
+</body>
+</html>
