@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fib + Nacci</title>
+	<script type="text/javascript">
+		function fib() {
+		 	let count = 0
+		 	let new_count = 1
+		  	function nacci() {
+			  	let value = count + new_count;
+			  	count = new_count;
+			  	new_count = value;
+		    	console.log(count)
+		  	}
+		  	return nacci
+		}
+		var fibCounter = fib();
+		fibCounter() // should console.log "1"
+		fibCounter() // should console.log "1"
+		fibCounter() // should console.log "2"
+		fibCounter() // should console.log "3"
+		fibCounter() // should console.log "5"
+		fibCounter() // should console.log "8"
+	</script>
+</head>
+<body>
+	<h1>Hi!</h1>
+</body>
+</html>
